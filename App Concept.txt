@@ -1,0 +1,37 @@
+App concept notes: 
+Narratives
+The purpose of this app is to allow a user to search for a movie or TV show and easily see where it can be streamed.  On first launch the user will be prompted to pick what streaming services they use (or want to see results from), then asked to sign into their accounts (at least Netflix, if it is picked).  
+sketches
+NOT IN TXT VERSION
+ 
+categorized list of use cases
+User use cases
+•	As a user I want to see if a movie/show is available on Netflix
+•	As a user I want to see if a movie/show is available on Hulu
+•	As a user I want to see if a movie/show is available on Amazon Video
+•	As a user I want to see if a movie/show is available on Google Play (Stretch)
+•	As a user I want to see how much a movie/show cost to stream (Amazon/Google)
+•	As a user I want to see suggestions from my streaming services (Stretch)
+•	As a user I want to be able to open a streaming app from within this one (Stretch)
+Dev use cases
+•	As a developer I want the app to check an online database (not update a database manually)
+
+database schema
+
+screen layouts 
+Home
+Relative or grid layout
+Login
+Linear layout
+Home
+Linear or relative layout
+Search
+Linear layout
+
+screen flows
+NOT IN TXT VERSION
+ 
+Object-oriented design of application domain model.
+START OF DESIGN
+NOT IN TXT VERSION 
+
