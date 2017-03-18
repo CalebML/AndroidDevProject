@@ -1,5 +1,7 @@
 package com.caleblarson.devproject;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +30,9 @@ public class Setup extends AppCompatActivity {
                 boolean isShow = false;
                 if(radioShow.isChecked())
                     isShow = true;
+
+//                getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.NetflixScrollView)).commit();
+//                getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.HuluScrollView)).commit();
 
                 BackGroundJob job = new BackGroundJob();
                 job.execute(new TaskParams(txtSearchVal.getText().toString(), Setup.this, isShow));
@@ -60,7 +65,35 @@ public class Setup extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Results results) {
-            //process results
+            for (int i = 0; i < results.getTotal_results(); i++)
+            {
+                if(results.results[i].isNetflix())
+                {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", results.results[i].getTitle());
+                    if(results.results[i].getartwork_608x342() != null)
+                        bundle.putString("imageURL", results.results[i].getartwork_608x342());
+                    else
+                        bundle.putString("imageURL", results.results[i].getPoster_400x570());
+                    Fragment newFragment = new ResultFragment();
+                    newFragment.setArguments(bundle);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.add(R.id.NetflixScrollView, newFragment).commit();
+                }
+                if(results.results[i].isHulu())
+                {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", results.results[i].getTitle());
+                    if(results.results[i].getartwork_608x342() != null)
+                        bundle.putString("imageURL", results.results[i].getartwork_608x342());
+                    else
+                        bundle.putString("imageURL", results.results[i].getPoster_400x570());
+                    Fragment newFragment = new ResultFragment();
+                    newFragment.setArguments(bundle);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.add(R.id.HuluScrollView, newFragment).commit();
+                }
+            }
         }
     }
 }

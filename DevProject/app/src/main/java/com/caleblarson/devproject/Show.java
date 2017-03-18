@@ -8,14 +8,16 @@ public class Show {
 
     private String title;
     private String id;
-    private String artwork_208x117;
+    private String artwork_608x342;
+    private String poster_400x570;
     private boolean hulu;
     private boolean netflix;
 
-    public Show(String title, String id, String artwork_208x117) {
+    public Show(String title, String id, String artwork_608x342, String poster_400x570) {
         this.title = title;
         this.id = id;
-        this.artwork_208x117 = artwork_208x117;
+        this.artwork_608x342 = artwork_608x342;
+        this.poster_400x570 = poster_400x570;
         netflix = false;
         hulu = false;
     }
@@ -36,12 +38,12 @@ public class Show {
         this.id = id;
     }
 
-    public String getArtwork_208x117() {
-        return artwork_208x117;
+    public String getartwork_608x342() {
+        return artwork_608x342;
     }
 
-    public void setArtwork_208x117(String artwork_208x117) {
-        this.artwork_208x117 = artwork_208x117;
+    public void setartwork_608x342(String artwork_608x342) {
+        this.artwork_608x342 = artwork_608x342;
     }
 
     public boolean isHulu() {
@@ -58,5 +60,13 @@ public class Show {
 
     public void setNetflix(boolean netflix) {
         this.netflix = netflix;
+    }
+
+    public String getPoster_400x570() {
+        return poster_400x570;
+    }
+
+    public void setPoster_400x570(String poster_400x570) {
+        this.poster_400x570 = poster_400x570;
     }
 }

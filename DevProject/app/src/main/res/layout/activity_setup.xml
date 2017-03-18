@@ -64,11 +64,18 @@
             android:text="@string/txtNetflix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:layout_weight="1" />
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/NetflixScrollView">
+            android:layout_height="100dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/NetflixScrollView">
+
+            </LinearLayout>
 
         </HorizontalScrollView>
 
@@ -76,12 +83,18 @@
             android:text="@string/txtHulu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:layout_weight="1" />
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/HuluScrollView">
+            android:layout_height="100dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/HuluScrollView">
 
+            </LinearLayout>
         </HorizontalScrollView>
 
     </LinearLayout>

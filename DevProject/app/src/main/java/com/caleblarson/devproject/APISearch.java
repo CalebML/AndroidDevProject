@@ -37,7 +37,7 @@ public class APISearch
         if(isShow)
             type = queryType.SHOW;
 
-        String json = queryServer(title, queryType.SEARCH, true);
+        String json = queryServer(title, queryType.SEARCH, isShow);
 
         Gson g = new Gson();
         Results results = g.fromJson(json, Results.class);
@@ -51,18 +51,43 @@ public class APISearch
 
         for(int i = 0; i < numResults; i++)
         {
-
-            json = queryServer(results.results[i].getId(), type, isShow, context.getString(R.string.hulu));
-            Results show = g.fromJson(json, Results.class);
-            if(show.getTotal_results() > 0)
+            if(isShow)
             {
-                results.results[i].setHulu(true);
+                boolean hulu = false;
+                boolean netflix = false;
+                json = queryServer(results.results[i].getId(), type, isShow, context.getString(R.string.hulu));
+                Results show = g.fromJson(json, Results.class);
+                if (show.getTotal_results() > 0)
+                {
+                    hulu = true;
+                }
+                json = queryServer(results.results[i].getId(), type, isShow, context.getString(R.string.netflix));
+                show = g.fromJson(json, Results.class);
+                if (show.getTotal_results() > 0)
+                {
+                    netflix = true;
+                }
+                results.results[i].setNetflix(netflix);
+                results.results[i].setHulu(hulu);
             }
-            json = queryServer(results.results[i].getId(), type, isShow, context.getString(R.string.netflix));
-            show = g.fromJson(json, Results.class);
-            if(show.getTotal_results() > 0)
+            else
             {
-                results.results[i].setNetflix(true);
+                boolean hulu = false;
+                boolean netflix = false;
+                json = queryServer(results.results[i].getId(), type, isShow, context.getString(R.string.hulu));
+                Show show = g.fromJson(json, Show.class);
+                if (show.getTitle() != null)
+                {
+                    hulu = true;
+                }
+                json = queryServer(results.results[i].getId(), type, isShow, context.getString(R.string.netflix));
+                show = g.fromJson(json, Show.class);
+                if (show.getTitle() != null)
+                {
+                    netflix = true;
+                }
+                results.results[i].setNetflix(netflix);
+                results.results[i].setHulu(hulu);
             }
         }
 
